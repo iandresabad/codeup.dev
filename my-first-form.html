@@ -19,12 +19,10 @@
 				    <p>
 				        <button type="submit">Login</button>
 				    </p>
-		</form>
 		<h2>Compose an Email</h2>
-		<form method="POST" action="http://requestb.in/wfzliywg">
 				    <p>
-				        <label for="username">Email</label>
-				  		<textarea id="email_body" name="email_body" rows="5" cols="40">Enter Your Email Here</textarea>
+				        <label for="mailing_list">
+				  		<input type="checkbox" id="mailing_list" name="emailing_list" value="yes" checked> Sign me up for the mailing list!</label>
 				    </p>
 				    <p>
 				        <label for="password">Password</label>
@@ -33,6 +31,51 @@
 				    <p>
 				        <button type="submit">Login</button>
 				    </p>
+		<h2>Multiple Choice Test</h2>
+				    <p>What operating systems have you used?</p>
+				    <p>
+				        <label for="os1"><input type = "checkbox" id="os1" name="os[]" value="linux"> Linux</label>
+				  		<label for="os2"><input type="checkbox" id="os2" name="os[]" value="windows"> Windows</label>
+				  		<label for ="os3"><input type="checkbox" id="os3" name="os3" value="OSX"> OS X</label>
+				    </p>
+				    <p>What is the capital of Texas?</p>
+				    <p>
+				    	<label for="q1a">
+				    		<input type ="radio" id="q1a" name="q1" value="houston"> 
+				    		Houston
+				    	</label>
+				    	<label for="q1b">
+						    <input type="radio" id="q1b" name="q1" value="dallas">
+						    Dallas
+						</label>
+						<label for="q1c">
+						    <input type="radio" id="q1c" name="q1" value="austin">
+						    Austin
+						</label>
+						<label for="q1d">
+						    <input type="radio" id="q1d" name="q1" value="san antonio">
+						    San Antonio
+						</label>
+					</p>
+					<p>What is your favorite car?</p>
+					<p>
+						<label for="q2a">
+							<input type="radio" id="q2a" name="q2" value="lamborghini">
+							Lamborghini
+						</label>
+						<label for="q2b">
+							<input type="radio" id="q2b" name="q2" value="Dolorean">
+							Dolorean
+						</label>
+						<label for="q2c">
+							<input type="radio" id="q2c" name="q2" value="Ford">
+							Ford Fusion 
+						</label>
+						<label for="q2d">
+							<input type="radio" id="q2d" name="q2" value="BMW">
+							BMW Z3
+						</label>
+					</p>
 		</form>
 	</body> 
 </html>

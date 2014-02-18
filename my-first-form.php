@@ -1,0 +1,124 @@
+<?php
+
+echo "<p>POST:</p>";
+var_dump($_POST);
+
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- info for web browser goes here -->
+		<meta charset="utf-8">
+		<title>My First HTML Form</title>
+	</head>
+	<body>
+		<h2>User Login</h2>
+		<form method="POST" action="">
+				    <p>
+				       <label for="username">Username</label>
+				        	<input id="username" name="username" type="text" placeholder="Enter your username">
+				    	</p>
+				   	<p>
+				      <label for="password">Password</label>
+				        	<input id="password" name="password" type="password" placeholder="Enter your password">
+				    	</p>
+		<h2>Compose an Email</h2>
+				    <p>
+				    	<label for="mailing_reciever">To:</label>
+				    		<input type="text" id="mailing_reciever" name="mailing_reciever">
+				    	</p>
+				    		<p>
+				    			<label for="mailing_sender">From:</label>
+				    				<input type="text" id="mailing_sender" name="mailing_sender">
+				    			</p>
+				    				<p>
+				    					<label for="mailing_subject">Subject</label>
+				    						<input type="text" id="mailing_subject" name"mailing_subject">
+				    					</p>
+				    				<p>
+				    			<textarea id="mailing_comment" name="mailing_comment" rows="5" cols="40" placeholder="Comment Here"></textarea>
+				    		</p>
+				    	<p>
+				      <label for="mailing_checkbox">
+				  			<input type="checkbox" id="mailing_checkbox" name="mailing_checkbox" value="yes" checked> Sign me up for the mailing list!
+				  		</label>
+				   </p>
+		<h2>Multiple Choice Test</h2>
+				    <p>What operating systems have you used?</p>
+				    <p>
+				      <label for="os1"><input type = "checkbox" id="os1" name="os[1]" value="linux"> Linux</label>
+				  			<label for="os2"><input type="checkbox" id="os2" name="os[2]" value="windows"> Windows</label>
+				  				<label for ="os3"><input type="checkbox" id="os3" name="os[3]" value="OSX"> OS X</label>
+				    		</p>
+				    	<p>What is the capital of Texas?</p>
+				   <p>
+				    <label for="q1a">
+				    		<input type ="radio" id="q1a" name="q1" value="houston"> 
+				    			Houston
+				    				</label>
+				    			<label for="q1b">
+						    		<input type="radio" id="q1b" name="q1" value="dallas">
+						    	Dallas
+									</label>
+								<label for="q1c">
+						    		<input type="radio" id="q1c" name="q1" value="austin">
+						    	Austin
+									</label>
+								<label for="q1d">
+						    		<input type="radio" id="q1d" name="q1" value="san antonio">
+						    San Antonio
+						</label>
+					</p>
+					<p>What is your favorite car?</p>
+						<p>
+							<label for="q2a">
+								<input type="radio" id="q2a" name="q2" value="lamborghini">
+							Lamborghini
+						</label>
+							<label for="q2b">
+								<input type="radio" id="q2b" name="q2" value="Dolorean">
+							Dolorean
+						</label>
+							<label for="q2c">
+								<input type="radio" id="q2c" name="q2" value="Ford">
+							Ford Fusion 
+						</label>
+							<label for="q2d">
+								<input type="radio" id="q2d" name="q2" value="BMW">
+							BMW Z3
+						</label>
+					</p>
+			<h2>Select Testing</h2>
+					<p>
+						<label for="transmission">Would you like it automatic? </label>
+						<select id="transmission" name="transmission">
+							<option value="1">Yes</option>
+							<option value="0">No</option>
+						</select>
+					</p>
+						<p>
+							<label for="tv">What is your favorite tv show? </label>
+							<select id="tv" name="tv[]" multiple>
+								<option value="Naruto">Naruto</option>
+							   	<option value="Yu-Gi-Oh">Yu-Gi-Oh</option>
+								<option value="DBZ" selected>DBZ</option>
+						</select>
+					</p>
+			<center>
+				<br>
+			</br>
+		<h2>Comments</h2>
+				<textarea id="comment_body" name="coment_body" rows="5" cols="40" placeholder="Comment Here"></textarea>
+					<br>
+				</br>
+				    <p>
+				       <button type="submit">Login</button>
+				    	</p>
+					<a href="#top">Go to the top of the page</a>
+				<p>
+			</p>	
+				<button type="reset" value="Reset">Reset</button>
+		</center>
+		</form>
+	</body> 
+</html>

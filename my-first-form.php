@@ -7,11 +7,92 @@ var_dump($_POST);
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- info for web browser goes here -->
 		<meta charset="utf-8">
 		<title>My First HTML Form</title>
+			<script>
+		      var items = {};
+		      items.list = {};
+		      items.list.table = null;
+
+		      
+		      items.list.open = function() {
+		        var tableSize = 5 * 1024 * 1024; // 5MB
+		        items.list.table = openDatabase("Todo", "1.0", "Todo manager", tableSize);
+		      }
+		      
+		      items.list.createTable = function() {
+		        var table = items.list.table;
+		        table.transaction(function(tx) {
+		          tx.executeSql("CREATE TABLE IF NOT EXISTS todo(ID INTEGER PRIMARY KEY ASC, todo TEXT, added_on DATETIME)", []);
+		        });
+		      }
+		      
+		      items.list.addTodo = function(todoText) {
+		        var table = items.list.table;
+		        table.transaction(function(tx){
+		          var addedOn = new Date();
+		          tx.executeSql("INSERT INTO todo(todo, added_on) VALUES (?,?)",
+		              [todoText, addedOn],
+		              items.list.onSuccess,
+		              items.list.onError);
+		         });
+		      }
+		      
+		      items.list.onError = function(tx, e) {
+		        alert("There has been an error: " + e.message);
+		      }
+		      
+		      items.list.onSuccess = function(tx, r) {
+		        // re-render the data.
+		        items.list.getAllTodoItems(loadTodoItems);
+		      }
+		      
+		      
+		      items.list.getAllTodoItems = function(renderFunc) {
+		        var table = items.list.table;
+		        table.transaction(function(tx) {
+		          tx.executeSql("SELECT * FROM todo", [], renderFunc,
+		              items.list.onError);
+		        });
+		      }
+		      
+		      items.list.deleteTodo = function(id) {
+		        var table = items.list.table;
+		        table.transaction(function(tx){
+		          tx.executeSql("DELETE FROM todo WHERE ID=?", [id],
+		              items.list.onSuccess,
+		              items.list.onError);
+		          });
+		      }
+		      
+		      function loadTodoItems(tx, rs) {
+		        var rowOutput = "";
+		        var todoItems = document.getElementById("todoItems");
+		        for (var i=0; i < rs.rows.length; i++) {
+		          rowOutput += renderTodo(rs.rows.item(i));
+		        }
+		      
+		        todoItems.innerHTML = rowOutput;
+		      }
+		      
+		      function renderTodo(row) {
+		        return "<li>" + row.todo  + " [<a href='javascript:void(0);'  onclick='items.list.deleteTodo(" + row.ID +");'>Delete</a>]</li>";
+		      }
+		      
+		      function init() {
+		        items.list.open();
+		        items.list.createTable();
+		        items.list.getAllTodoItems(loadTodoItems);
+		      }
+		      
+		      function addTodo() {
+		        var todo = document.getElementById("todo");
+		        items.list.addTodo(todo.value);
+		        todo.value = "";
+		      }
+		</script>
 	</head>
-	<body>
+	<body onload="init();">
 		<h2>User Login</h2>
 		<form method="POST" action="">
 				    <p>
@@ -22,6 +103,7 @@ var_dump($_POST);
 				      <label for="password">Password</label>
 				        	<input id="password" name="password" type="password" placeholder="Enter your password">
 				    	</p>
+			 <button type="submit">Log In</button>
 		<h2>Compose an Email</h2>
 				    <p>
 				    	<label for="mailing_reciever">To:</label>
@@ -101,24 +183,24 @@ var_dump($_POST);
 							<select id="tv" name="tv[]" multiple>
 								<option value="Naruto">Naruto</option>
 							   	<option value="Yu-Gi-Oh">Yu-Gi-Oh</option>
-								<option value="DBZ" selected>DBZ</option>
+								<option value="tableZ" selected>tableZ</option>
 						</select>
 					</p>
-			<center>
-				<br>
-			</br>
-		<h2>Comments</h2>
-				<textarea id="comment_body" name="coment_body" rows="5" cols="40" placeholder="Comment Here"></textarea>
-					<br>
-				</br>
-				    <p>
-				       <button type="submit">Login</button>
-				    	</p>
-					<a href="#top">Go to the top of the page</a>
 				<p>
 			</p>	
 				<button type="reset" value="Reset">Reset</button>
+				</form>
+			<h2>TODO List</h2>
+				<form type="post" onsubmit="addTodo(); return false;" action="">
+					<input type="text" id="todo" name="todo" placeholder="Add TODO Items" style="width: 200px;" />
+				<input type="submit" value="Add"/>
+			</form>
+				<ul id="todoItems">
+				</ul>
+			<center>
+			<br>
+		</br>
+			<a href="#top">Go to the top of the page</a>
 		</center>
-		</form>
 	</body> 
 </html>

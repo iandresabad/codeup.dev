@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+
+		(function() {
+			function myNameIs() {
+				var myNameIs = 'Ivan';
+				console.log("Hello from " + myNameIs + "!");
+			};
+			myNameIs();
+		}());
+
+		(function() {
+			function isOdd() {
+				var random = Math.floor((Math.random()*100)+1);
+				var odd;
+			 	(random % 2 == 0) ? odd = "Number " +random + " is even." : odd = "Number " +random + " is odd.";
+			 	console.log(odd);
+			};
+			isOdd();
+		}());
+		
+
+		// var myNameIs = 'Ivan'; // todo: Fill in your name here.
+
+		// todo:
+		// function sayHello(name) {
+		// 	console.log("Hello from " + name);
+		// }
+		// sayHello(myNameIs);
+
+		// function isOdd(odd) {
+		// 	(odd % 2 != 0);
+		// 	if(odd) {
+		// 		console.log('number is odd');
+		// 	}else
+		// 		console.log('number is even');
+		// }
+
+		// console.log("Random: " + random);
+		// isOdd(random);
+
+	</script>
+</body>
+</html>

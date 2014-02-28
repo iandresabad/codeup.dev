@@ -1,6 +1,6 @@
 <?php 
 
-include_once('classes/address_data_store.php');
+require_once('classes/address_data_store.php');
 
 $book = new AddressDataStore();
 

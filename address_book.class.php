@@ -6,6 +6,25 @@ $book = new AddressDataStore();
 
 $addressBook = $book->reading_address_book();
 
+class AddressBook extends AddressDataStore 
+{
+	public $items = array();
+
+	public function __construct($filename = '') {
+		$this->filename = $filename;
+	}
+
+	function read_address_book() 
+	{
+		$this->reading_address_book();	
+	}
+
+	function write_address_book($addresses_array) 
+	{
+		$this->write_address_book();
+	}
+}
+
 
 if(!empty($_POST)) {
 	$addressBook = $book->addingCSV($addressBook);

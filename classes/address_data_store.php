@@ -1,50 +1,58 @@
 <?php 
-	
-$filename = '';
 
-$errorMessage = "";
+class AddressDataStore extends filestore {
 
-class AddressDataStore {
+	public $filename ='';
 
-	function __construct($filename = 'data/address_book.csv') {
-		$this->filename = $filename;
-	}	
-		
-	function reading_address_book() {
-		$handle = fopen($this->filename, 'r');
-		$filesize = filesize($this->filename);
-		$openList = [];
-		if($filesize != 0) {
-			while(!feof($handle)) {
-				$openList[] = fgetcsv($handle);
-			}	
-		}else {
-			$openList = array();
-		}
-		fclose($handle);
-		return $openList;
-		}
+	public $errorMessage = "";
 
-	function write_addres_book($address_array) {
-	$handle = fopen($this->filename, "w");
-	foreach ($address_array as $fields) {
-		if ($fields != "") {
-			fputcsv($handle, $fields);
-		}
-	}
-	fclose($handle);
-	}
+    public function __construct($filename = '') 
+    {
+        if (!empty($filename)) {
+            $this->filename = $filename; 
+        }else {
+        	echo "Your File is empty"; 
+        }
 
-	function addingCSV($addressBook) {
-	$temp = $_POST;
-	if ($temp['name'] == '' || $temp['address'] == '' || ['city'] == '' || ['state'] == '' || ['zip'] == '') {
-		$this->errorMessage = "Please enter required information";
-	}else {
-		$addressBook[] = $temp;
-		$this->errorMessage = "";
-	}
-	return $addressBook;
-	}
+    }
+
+    /**
+     * Returns array of lines in $this->filename
+     */
+    public function read_lines_array($return_array = FALSE) 
+    {
+        $return_array = "{$this->read_Lines()} from {$this->file}";
+    }
+    
+    /**
+     * Writes each element in $array to a new line in $this->filename
+     */
+    function write_lines_contents($contents)
+    {
+        $contents = "{$this->write_lines()} from {$this-file}";
+    }
+
+    /**
+     * Reads contents of csv $this->filename, returns an array
+     */
+    function read_csv($filename = '')
+    {
+          $filename = "{$this->reading_address_book()} from {$this->filename}"; 
+    }
+
+    /**
+     * Writes contents of $array to csv $this->filename
+     */
+    function write_csv($address_array)
+    {
+        $address_array = "{$this->write_address_book()} from {$this->filename}"; 
+    }
+
+    function addCSV($addressBook) 
+    {
+    	$addressBook = "{$this->addingCSV} from {$this->filename}";
+    }
+
 }
 
 ?>

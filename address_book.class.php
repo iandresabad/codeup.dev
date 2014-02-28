@@ -45,13 +45,7 @@ class AddressDataStore {
 	}
 	return $addressBook;
 	}
-
-	function __destruct() {
-		echo "Class Dismmissed {$this->filename}\n";
-	}
 }
-
-unset($filename);
 
 $book = new AddressDataStore();
 

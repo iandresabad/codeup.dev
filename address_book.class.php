@@ -11,7 +11,6 @@ class AddressBook extends AddressDataStore
 	public $items = array();
 
 	public function __construct($filename = '') {
-		parent::__construct($filename);
 		$this->filename = $filename;
 	}
 

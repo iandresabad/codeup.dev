@@ -1,13 +1,15 @@
 <?php 
+require_once('classes/filestore.php');
 
-class AddressDataStore extends filestore {
+class AddressDataStore extends Filestore {
 
 	public $filename ='';
 
 	public $errorMessage = "";
 
-    public function __construct($filename = '') 
+    public function __construct($filename = 'data/address_book.csv') 
     {
+        parent::__construct($filename);
         if (!empty($filename)) {
             $this->filename = $filename; 
         }else {
@@ -19,23 +21,26 @@ class AddressDataStore extends filestore {
     /**
      * Returns array of lines in $this->filename
      */
+    //todo list 
     public function read_lines_array($return_array = FALSE) 
     {
-        $return_array = "{$this->read_Lines()} from {$this->file}";
+        $return_array = "{$this->read_Lines()} from {$this->filename}";
     }
     
     /**
      * Writes each element in $array to a new line in $this->filename
      */
-    function write_lines_contents($contents)
+    //todo list
+    public function write_lines_contents($contents)
     {
-        $contents = "{$this->write_lines()} from {$this-file}";
+        $contents = "{$this->write_lines()} from {$this->filename}";
     }
 
     /**
      * Reads contents of csv $this->filename, returns an array
      */
-    function read_csv($filename = '')
+    //book
+    public function read_csv($filename = '')
     {
           $filename = "{$this->reading_address_book()} from {$this->filename}"; 
     }
@@ -43,16 +48,16 @@ class AddressDataStore extends filestore {
     /**
      * Writes contents of $array to csv $this->filename
      */
-    function write_csv($address_array)
+    //book
+    public function write_csv($address_array)
     {
         $address_array = "{$this->write_address_book()} from {$this->filename}"; 
     }
-
-    function addCSV($addressBook) 
+    //book
+    public function addCSV($addressBook) 
     {
-    	$addressBook = "{$this->addingCSV} from {$this->filename}";
+        $addressBook = "{$this->addingCSV} from {$this->filename}";
     }
-
 }
 
 ?>

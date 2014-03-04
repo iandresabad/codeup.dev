@@ -2,6 +2,8 @@
 
 require_once('classes/address_data_store.php');
 
+class UnexpectedTypeIvalidInput extends Exception { }
+
 $book = new AddressDataStore();
 
 $addressBook = $book->reading_address_book();
@@ -25,11 +27,23 @@ class AddressBook extends AddressDataStore
 	}
 }
 
+$book = new AddressDataStore('address_book.csv');
 
-if(!empty($_POST)) {
-	$addressBook = $book->addingCSV($addressBook);
+try {
+	foreach ($_FILES as $empty => $content) {
+		if(empty($content)) {
+			throw new UnexpectedTypeIvalidInput("Their is no $content in your file");
+		}
+	}
+}catch (UnexpectedTypeIvalidInput $e) {
+	echo 'ERROR:' . $e->getMessage();
 }
 
+
+if(!empty($_POST)) 
+{
+		$addressBook = $book->addingCSV($addressBook);
+} 
 
 if(isset($_GET['remove']) && is_numeric($_GET['remove'])) {
 	$remove = $_GET['remove'];
@@ -38,6 +52,25 @@ if(isset($_GET['remove']) && is_numeric($_GET['remove'])) {
 	$_GET = array();
 	header("Location: address_book.class.php");
 	exit(0);
+}
+
+if (count($_FILES) > 0 && $_FILES['uploaded_file']['error'] == 0 && $_FILES['uploaded_file']['type'] == 'text/csv') {
+	    // Set the destination directory for uploads
+	    $upload_dir = '/vagrant/sites/codeup.dev/public/uploads/';
+	    // Grab the filename from the uploaded file by using basename
+	    $tempfilename = basename($_FILES['uploaded_file']['name']);
+	    // Create the saved filename using the file's original name and our upload directory
+	    $newlist->filename = $upload_dir . $tempfilename;
+	    // Move the file from the temp location to our uploads directory
+	    move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $newlist->filename);
+	    $appendList = $newlist->read_address_book();
+	    if (isset($_POST['overwrite']) && $_POST['overwrite'] == "yes") {
+	    	$addressBook = $appendList;
+	    	$book->write_address_book($addressBook);
+	    } else {
+	    	$addressBook = array_merge($addressBook, $appendList);
+	    	$book->write_address_book($addressBook);
+	    }
 }
 
 ?>
@@ -90,6 +123,17 @@ if(isset($_GET['remove']) && is_numeric($_GET['remove'])) {
 					<p>
 						<button type="submit">Add</button>
 					</p>
+						<form method = "POST" enctype="multipart/form-data" action = "">
+					<p>
+				        <label for="uploaded_file"></label>
+				        <input id="uploaded_file" name="uploaded_file" type="file">
+				    </p>
+				    <p>
+					    <label for="overwrite">
+						    <input type="checkbox" id="overwrite" name="overwrite" value="yes"> Over Write
+						</label>
+					</p>
+				    <p>
 					<p>&copy; 2014 Ivan Andres Abad</p>
 				</center>
 				</form>

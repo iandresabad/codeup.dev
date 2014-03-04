@@ -1,0 +1,35 @@
+
+<!-- saved from url=(0039)http://codeup.dev/objects-intro-js.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title></title>
+</head>
+<body>
+	<script>
+		var person = {};
+
+		person.firstName = "Ivan";
+		person.lastName = "Abad";
+		person.lastandfirst = person.firstName + " " + person.lastName;
+
+		person.sayHello = function() {
+			alert('Say Hello '+ this.lastandfirst);
+		};
+
+		person.sayHello();
+
+		person.lastandfirst = prompt("What is your name");
+
+		person.sayHello();
+
+		// todo:
+		// Create person object with firstName and lastName properties (set to your first and last name).
+		// var person = todo;
+
+		// todo:
+		// Add a say hello method to the person object that alerts hello using the firstName and lastName properties.
+
+		// Say hello from the person object.
+		// person.sayHello();
+	</script>
+
+</body></html>

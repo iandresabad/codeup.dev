@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script src='/js/moment.js'></script>
+	<script>
+
+var Months = [
+
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June', 
+		'July', 
+		'August', 
+		'September', 
+		'Ocotober', 
+		'Novemeber', 
+		'December'
+]; 
+
+
+var jsBirthday = new Date(1987, 2, 27, 9, 0, 0);
+console.log(jsBirthday); 
+
+console.log("---");
+console.log('Here is my birthday using Vanillla js: ');
+console.log(Months[jsBirthday.getMonth()]+" "+[jsBirthday.getDate()]+" "+[jsBirthday.getFullYear()]);
+
+console.log("---");
+console.log('Here is my birthday using Moment.js: ');
+// get birthday using my birthday using moment.js
+
+// get a specific date
+var momentBirthday = moment ("03-27-1987", "MM-DD-YYYY");
+// console.log(momentBirthday.calendar());
+console.log(momentBirthday.format("MMMM Do YYYY"));
+
+//NOTE: JANUARY 1ST 1970 = date.now(); 
+
+	</script>
+</body>
+</html>

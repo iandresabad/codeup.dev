@@ -1,0 +1,89 @@
+/* 
+multi
+line
+comment
+*/
+body {
+	 background-color: gray;
+}
+
+#container {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 0px auto;
+    width: 500px;
+    height: auto;
+    background-color: #708090;
+    color: white;
+    border: 5px solid black;
+    text-align: center;
+
+}
+
+#container h1.fancy-header {
+    color: Black; /* single line comment */
+    text-decoration: underline;
+    font-family: Courier New;
+    font-size: 80px;
+    background-color: #FFFACD;
+    margin: 20px auto;
+}
+
+#container h3.fancy-header {
+  	color: Black; /* single line comment */
+    text-decoration: underline;
+    font-family: Courier New;
+}
+
+#container div.itemContainer {
+	margin: 0px auto;
+	background-color: #2D333A;
+	padding: 10px;
+	width: 400px;
+
+
+
+
+}
+
+body {
+	padding: 10px;
+}
+
+div {
+	display: block;
+
+}
+
+ul {
+	/*padding: 0px;*/
+	margin: 0px auto;
+	text-align: left;
+	width: 250px;
+}
+
+form {
+	margin: 0px auto;
+	text-align: center;
+	width: 250px;
+
+}
+input {
+	/*padding: 0px;*/
+	text-align: center;
+}
+
+/*label {
+	padding-bottom: 10px;
+}*/
+
+#file1 {
+	padding-left: 40px;
+	padding-top: 10px;
+}
+
+/*.debug {
+	border: 1px solid #ff0000;
+}*/

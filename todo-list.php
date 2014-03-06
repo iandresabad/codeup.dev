@@ -70,36 +70,41 @@ if(count($_FILES) > 0) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TODO List</title>
+	<title>TODO List with CSS</title>
+	<link rel="stylesheet" href="/css/todo-list.css">
 </head>
 <body>
-
-	<h2>TODO List</h2>
-		<ul>
-			<? foreach ($items as $key => $item): ?>
-				<li><?= htmlspecialchars(strip_tags($item)); ?> <a href="?remove=<?= $key; ?>">DELETE</a></li>
-				<? endforeach; ?>
-		</ul>
-		<h3>Add a TODO List item:</h3>
-		<form method="POST" enctype="multipart/form-data" action="todo-list.php">
-			<p>
-				<label for="newItem">New Item</label>
-				<input id="newItem" name ="newItem" type="text" autofocus="autofocus">
-			</p>
-			<p>
-				<? if (!empty($errorMessage)) : ?>
-				<?= $errorMessage; ?>
-				<? endif; ?>
-			</p>
-			<p>
-				<label for="file1">File to upload: </label>
-				<input id="file1" name="file1" type="file">
-			</p>
-			<p>
-				<label for="file0">Overwrite File? </label>
-				<input id="file0" name="file0" type="checkbox">
-			</p>
-				<button type="submit">Add Item</button>
-			</form>
+	<div id="container">
+		<h1 class ="fancy-header">TODO List</h1>
+			<div class="itemContainer">
+				<ul>
+					<? foreach ($items as $key => $item): ?>
+						<li><?= htmlspecialchars(strip_tags($item)); ?> <a href="?remove=<?= $key; ?>">DELETE</a></li>
+						<? endforeach; ?>
+				</ul>
+				<h3 class="fancy-header">Add a TODO List item:</h3>
+				<form method="POST" enctype="multipart/form-data" action="todo-list.php">
+					<p>
+						<label for="newItem">New Item</label>
+						<input id="newItem" name ="newItem" type="text" autofocus="autofocus">
+					</p>
+					<p>
+						<? if (!empty($errorMessage)) : ?>
+						<?= $errorMessage; ?>
+						<? endif; ?>
+					</p>
+					<p>
+						<button type="submit">Add Item</button>
+					</p>
+					<p>
+						<label for="file0">Overwrite File? </label>
+						<input id="file0" name="file0" type="checkbox">
+					</p>
+						<label for="file1">File to upload: </label>
+						<input id="file1" name="file1" type="file">
+						<p>&copy; 2014 Ivan Andres Abad</p>
+					</form>
+				</div>
+		</div>
 </body>
 </html>

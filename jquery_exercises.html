@@ -11,7 +11,7 @@
 			margin:20px, auto;
 			width: 80px;
 			text-align: center;
-			background-color: red;
+			border: 1px solid black;
 
 		}
 	</style>
@@ -19,7 +19,7 @@
 	<script src="/js/jquery.js"></script>
 	<script type="text/javascript">
 		$('document').ready(function() {
-    			$('.highlight').css('border', 'solid #000', '1px'); 
+    			$('.highlight').css('background-color', 'red'); 
 		});
 	</script>
 </head>
@@ -30,7 +30,7 @@
 	 		<p id="todoList">Todo List</p>
 	 		<ul>
 	 			<li class="highlight">Take out the trash</li>
-	 			<li class="highlight">clean the car</li>
+	 			<li>clean the car</li>
 	 			<li class="highlight">do my hw</li>
 	 		</ul>
 	 	</p>

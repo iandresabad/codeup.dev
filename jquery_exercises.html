@@ -2,17 +2,24 @@
 <head>
 	<style>
 		li.important {color:green;}
+		.highlight 
+		{
+			padding-top: 15px;
+			padding-bottom: 15px;
+			padding-left: 15px;
+			padding-right: 15px;
+			margin:20px, auto;
+			width: 80px;
+			text-align: center;
+			background-color: red;
+
+		}
 	</style>
 	<title></title>
 	<script src="/js/jquery.js"></script>
 	<script type="text/javascript">
 		$('document').ready(function() {
-    		var contents = $('#codeup').html();
-    		alert(contents);
-    		var todos = $('#todoList').html();
-    		alert(todos);
-    		var contents = $('#GB').html();
-    		alert(contents);
+    			$('.highlight').css('border', 'solid #000', '1px'); 
 		});
 	</script>
 </head>
@@ -20,11 +27,11 @@
 	 <h1 id="codeup">Hello Codeup</h1>
 	 <div>
 	 	<p>
-	 		<p id="todoList" class="intro">Todo List</p>
+	 		<p id="todoList">Todo List</p>
 	 		<ul>
-	 			<li class="important">Take out the trash</li>
-	 			<li class="important">clean the car</li>
-	 			<li class="important">do my hw</li>
+	 			<li class="highlight">Take out the trash</li>
+	 			<li class="highlight">clean the car</li>
+	 			<li class="highlight">do my hw</li>
 	 		</ul>
 	 	</p>
 	 </div>

@@ -2,7 +2,7 @@
 <head>
 	<style>
 		li.important {color:green;}
-		.highlight 
+		.highlight
 		{
 			padding-top: 15px;
 			padding-bottom: 15px;
@@ -13,16 +13,21 @@
 			text-align: center;
 			border: 1px solid black;
 			background-color: red;
+			
+		}
+		
+		.clicked {
+			background-color: #3399FF;
 		}
 	</style>
 	<title></title>
 	<script src="/js/jquery.js"></script>
 </head>
 <body>
-	 <h1 id="codeup">Hello Codeup</h1>
+	 <h1 id="codeup-important" class="important clicked">Hello Codeup</h1>
 	 <div>
 	 	<p>
-	 		<p id="todoList" class="not-highlight">Todo List</p>
+	 		<p id="todoList">Todo List</p>
 	 		<ul>
 	 			<li class="highlight">Take out the trash</li>
 	 			<li class="highlight">clean the car</li>
@@ -33,14 +38,18 @@
 	 <h2 id="GB">Good Bye Codeup</h2>
 	<script type="text/javascript">
 		$('document').ready(function() {
+			$('#codeup-important').click(function(event) {
+				event.preventDefault();
+				$('.important').toggleClass('clicked');
+			}); 
 			$('#textfield').on('keyup', function() {
                 alert('.keydown() event fired');
             });
-			$('h1').click(
-				function() {
-					// alert('h1 with id "codeup" was clicked');
-					$(this).css('background-color', 'red');
-			});
+			// $('h1').click(
+			// 	function() {
+			// 		// alert('h1 with id "codeup" was clicked');
+			// 		$(this).css('background-color', 'red');
+			// });
 			$('li').dblclick(
 				function() {
 					$(this).css('font-size', '18px');

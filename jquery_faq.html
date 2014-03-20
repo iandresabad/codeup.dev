@@ -1,6 +1,9 @@
 <html>
 <head>
 	<style>
+		#national-parks, #state-parks-texas {
+    	display: none;
+		}
 		.invisible 
 		{
 			display: none;
@@ -8,43 +11,48 @@
 	</style>
     <title>Parks List</title>
     <script src="/js/jquery.js"></script>
-    <script>
-        $('document').ready(function() {
-        	$('li').click(function () {
-        		$(this).parent().addClass('invisible');
-        	});
-
-        	$('li').each(function(index) {
-    			if (index % 2 != 0) {
-        		$(this).css('background-color', '#FF0');
-    			}
-			});
-
-        	$('#national-parks').children().css('font-weight', 'bold');
-            
-            $('li').css('background-color', '#FF0');
-
-            $('li').parent().css('background-color', '#0F0');
-        });
-    </script>
 </head>
 <body>
-    <h1>Parks List</h1>
-    <h3>National Parks</h3>
-    <ul id="national-parks">
-        <li>Arches</li>
-        <li>Badlands</li>
-        <li>Carlsbad Caverns</li>
-        <li>Denali</li>
-        <li>Everglades</li>
-    </ul>
-    <h3>State Parks of Texas</h3>
-    <ul id="state-parks-texas">
-        <li>Abilene</li>
-        <li>Big Bend</li>
-        <li>Choke Canyon</li>
-        <li>Davis Mountains</li>
-        <li>Enchanted Rock</li>
-    </ul>
+	<h1>Parks List</h1>
+	<h3 id="national-parks-toggle">National Parks</h3>
+	<ul id="national-parks">
+	    <li>Arches</li>
+	    <li>Badlands</li>
+	    <li>Carlsbad Caverns</li>
+	    <li>Denali</li>
+	    <li>Everglades</li>
+	</ul>
+	<h3 id="state-parks-texas-toggle">State Parks of Texas</h3>
+	<ul id="state-parks-texas">
+	    <li>Abilene</li>
+	    <li>Big Bend</li>
+	    <li>Choke Canyon</li>
+	    <li>Davis Mountains</li>
+	    <li>Enchanted Rock</li>
+	</ul>
 </body>
+    <script>
+    	$('#national-parks-toggle').click(function() {
+        $('#national-parks').toggle();
+    	});
+    	$('#state-parks-texas-toggle').click(function() {
+        $('#state-parks-texas').toggle();
+    	});
+
+    	$('li').click(function () {
+    		$(this).parent().addClass('invisible');
+    	});
+
+    	$('li').each(function(index) {
+			if (index % 2 != 0) {
+    		$(this).css('background-color', '#FF0');
+			}
+		});
+
+    	$('#national-parks').children().css('font-weight', 'bold');
+        
+        $('li').css('background-color', '#FF0');
+
+        $('li').parent().css('background-color', '#0F0');
+    </script>
 </html>
